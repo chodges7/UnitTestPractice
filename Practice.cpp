@@ -7,26 +7,28 @@ using std::string;
 // descending order from greatest (first) to least (third)
 bool Practice::sortDescending(int & first, int & second, int & third)
 {
-  if( first < second )
-  {
-    int temp = first;
-    first = second;
-    second = temp;
-  }
-  if( first < third )
-  {
-    int temp = first;
-    first = third;
-    third = temp;
-  }
-  if( second < third )
-  {
-    int temp = second;
-    second = third;
-    third = temp;
+  while(first < second || second < third || first < third) {
+    if( first <= second )
+    {
+      int temp = first;
+      first = second;
+      second = temp;
+    }
+    if( first <= third )
+    {
+      int temp = first;
+      first = third;
+      third = temp;
+    }
+    if( second <= third )
+    {
+      int temp = second;
+      second = third;
+      third = temp;
+    }
   }
 
-  if((first > second) && (second > third))
+  if((first >= second) && (second >= third))
   {
     return true;
   }
@@ -53,7 +55,7 @@ bool Practice::isPalindrome(string input)
   for(unsigned int i=0; i < input.size()/2; i++)
   {
     if( input[i] != input[input.size()-1-i] )
-      return false;
+    return false;
   }
   return true;
 }
